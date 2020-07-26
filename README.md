@@ -4,7 +4,7 @@
 
 We are tackling the problem of recognizing individual bird species in mixtures of sounds. We can synthesize datasets by superimposing various sound clips. Therefore, we will pre-process our raw data--audios, by transforming them into spectrograms. The following command is run.
 
-python3 codes/aud_to_spec.ipynb --src_dir <path_to_raw_audios> --spec_dir <path_to_spec_destination>
+    python3 aud_to_spec.ipynb --src_dir <path_to_raw_audios> --spec_dir <path_to_spec_destination>
 
 ## Building the dataset
 
@@ -27,6 +27,6 @@ To compare all neural nets, one uses the following code.
 
 To evaluate the tests set, one uses the following code:
 
-       python evaluate.py --data_dir <path-to-test-data> --model_dir <path-to-folder-of-the-selected-model>
+    python evaluate.py --data_dir <path-to-test-data> --model_dir <path-to-folder-of-the-selected-model>
     
 
