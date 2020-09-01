@@ -11,6 +11,7 @@ pip3 install -r requirements.txt
 This will install all the required libraries on your system. 
 
 The project consists of 3 tasks:
+
 1- Preprocessing
 
 2- Building the Dataset
