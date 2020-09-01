@@ -1,32 +1,52 @@
 # MSc-BirdClef-CNN-Project
 
-## Data Preprocessing
+## Introduction:
+The accurate classification of the identity  of bird species is essential for most biodiversity projects.
+In particular, groups such as ornithologists and ecological consultants are potential users of an automated bird sound identifying system, specifically for conservation or surveillance initiatives. The LifeCLEF foundation have setup the BirdCLEF initiative to evaluate various audio based bird identification systems.
 
-We are tackling the problem of recognizing individual bird species in mixtures of sounds. We can synthesize datasets by superimposing various sound clips. Therefore, we will pre-process our raw data--audios, by transforming them into spectrograms. The following command is run.
+In order to run the nets, we first need to install different modules. For this run the following command on your terminal:
 
-    python3 aud_to_spec.ipynb --src_dir <path_to_raw_audios> --spec_dir <path_to_spec_destination>
+pip3 install -r requirements.txt
 
-## Building the dataset
+This will install all the required libraries on your system. 
 
-Using the folliwng code, one is able to split the data between the training, validation and test datasets through implementation of the build_dataset notebook.
+The algorithm consists of 4 parts
+1- Preprocessing
+2- Building the Dataset
+3- Training and Evaluation
 
-    python3 build_dataset.ipynb --data_dir <path_to_preprocessed_data> --output_dir <path_to_desired_splitted_datasets>
-    
-## Train the Model
+# Preprocessing
+For this, we are using the Data_Preprocessing.ipynb file. As a prerequisite to the file, please create a folder with all the bird files.
+Bird audio files are available from the following sources:
+1- https://www.xeno-canto.org
+2-Specificially for this project: https://www.imageclef.org/BirdCLEF2020
+If this first data source is used, bird sounds to be placed in folders correlating to the species.
+Once this is done,  the jupyter notebook Data_Preprocessing.ipynb can be run to generate results and see graphical comparison.
+This will run the file and produce the preprocessed files in an output folder.
 
-First, create a .json file that sets teh parameters for yoru neural net. 
-Then Run the follwing line of code:
+# Building the Dataset:
+Once we have the preprocessed files, we need to divide the data in train:validation:test data group but before this we need to get the spectrograms of each mp3 file. For this we run the build_dataset.ipynb and it will save all the spectograms on a drive
 
-    python3 train.ipynb --data_dir <path_to_splitted_datasets> --model_dir <path_to_the_folder_of_json_file>
-    
-## Evaluation
+# Train and Evaluation:
+In this phase we will need the hyperparameters in a folder in json_format.
+A valid json_format is as follows:
+{
+    "model": 1,
+    "width": 128,
+    "learning_rate": 1e-3,
+    "batch_size": 32,
+    "num_epochs": 120,
+    "save_summary_steps": 100,
+    "num_workers": 4,
+    "growthRate": 12, 
+    "depth": 15, 
+    "reduction": 0.5,
+    "optimizer": 2,
+    "threshold": 0.5,
+    "dropout": 0.5
+}
 
-To compare all neural nets, one uses the following code.
+Once we have the params and we run the ipynb file, it will start training for that particular model and results will be plotted.
+BirdClefs metric is mAP which is defined in the net.ipynb file and can be called during training and evaluation.
 
-    python3 synthesize_results.ipynb --parent dir <path-to-parent-folder-with-various-exps>
-
-To evaluate the tests set, one uses the following code:
-
-    python evaluate.py --data_dir <path-to-test-data> --model_dir <path-to-folder-of-the-selected-model>
-    
 
