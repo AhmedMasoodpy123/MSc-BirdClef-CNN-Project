@@ -280,7 +280,7 @@ python-utils==2.4.0
 pytz==2018.9
 pyviz-comms==0.7.6
 PyWavelets==1.1.1
-PyYAML==3.13
+PyYAML>=5.4
 pyzmq==19.0.2
 qtconsole==4.7.6
 QtPy==1.9.0
@@ -323,7 +323,7 @@ tblib==1.7.0
 tensorboard==2.3.0
 tensorboard-plugin-wit==1.7.0
 tensorboardcolab==0.0.22
-tensorflow==2.3.0
+tensorflow>=2.4.0
 tensorflow-addons==0.8.3
 tensorflow-datasets==2.1.0
 tensorflow-estimator==2.3.0
